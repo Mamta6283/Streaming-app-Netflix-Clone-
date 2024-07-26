@@ -10,7 +10,7 @@ const initialState ={
              data: null,
              error: null
 
-     }
+     }  
 }
 
 
@@ -37,7 +37,7 @@ export const tvSlice =createSlice({
                     
                 })
                 .addCase(fetchNetflixOriginals.fulfilled,(state,action)=> {
-                    state.netflixOriginals.status="***SUCCESS***";
+                    state.netflixOriginals.status="success";
                     state.netflixOriginals.data=action.payload
                 })
                 .addCase(fetchNetflixOriginals.rejected,(state,action)=> {
