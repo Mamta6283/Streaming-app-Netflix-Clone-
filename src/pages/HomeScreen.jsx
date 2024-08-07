@@ -1,4 +1,4 @@
-import React, { useEffect  } from 'react';
+import React, { useEffect, useState  } from 'react';
 import { fetchAiringTodayTv, fetchNetflixOriginals, fetchOnTheAirTv, fetchPopularTv, selectAiringTodayTv, selectNetflixOriginals, selectOnTheAirTv, selectPopularTv } from '../features/tv/tvSlice';
 import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux';
@@ -14,16 +14,45 @@ function HomeScreen(props) {
     const {data ,status,error} =useSelector(selectNetflixOriginals)
     // console.log(Math.random())//generating random no between 0 to 1but not including 1
     // console.log(Math.random(Math.floor(5 )))
+
+    const [randomIndex,setRandomIndex]=useState(0)
    
     useEffect(()=>{
         dispatch(fetchNetflixOriginals());
-        // dispatch(fetchNowplayingMovies());
+    //    if(data && data.results){
+    //     setRandomIndex(Math.floor(Math.random() * data.results.length))
+    //     const intervalId=setInterval(() => {
+    //         setRandomIndex(Math.floor(Math.random() * data.results.length))
+    //     }, 30000);
+
+       
+    //    return ()=>clearInterval(intervalId)
+    // }
+        
     },[])
+
+    useEffect(()=>{
+        if(data && data.results){
+            setRandomIndex(Math.floor(Math.random() * data.results.length))
+            const intervalId=setInterval(() => {
+                setRandomIndex(Math.floor(Math.random() * data.results.length))
+            }, 10000);
+    
+           
+           return ()=>clearInterval(intervalId)
+        }
+            
+        },[data])
+   
+    
     return (
         <>  
+        
             {
-                
-                status==="success" ? <Header video={data.results[Math.floor(Math.random() * data.results.length)]} platform={platformType.tv}  /> :"....loading....."
+
+              
+                status==="success" ? <Header video={data.results[randomIndex]} platform={platformType.tv}  /> :"....loading....."
+             
               }
               <div className='px-4  bg-slate-900 text-white font-display'>
                   <MovieRow title="Upcoming_Movie" action={fetchUpcomingMovies} selector={selectUpcomingMovies} platform={platformType.movie}> </MovieRow>

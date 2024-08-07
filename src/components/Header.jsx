@@ -16,9 +16,14 @@ function Header(props) {
         setShowVideo(true)
      }
      useEffect(()=>{
-        if(video){
-        dispatch(fetchHeaderDetails({type:platform ,id:video.id}))
-        }
+        
+            
+            if(video){
+        
+                dispatch(fetchHeaderDetails({type:platform ,id:video.id}))
+               } 
+          
+     
      },[video])
     return (
            

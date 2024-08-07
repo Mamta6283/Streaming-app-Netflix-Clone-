@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 import instance from "../../helper/axios"
 import { request } from "../../helper/apiRequest"
+import Search from "../../pages/Search"
 
 
 const initialState={
@@ -14,7 +15,11 @@ const initialState={
         status:"idle",
         data:null,
         error:null
-    }
+    },
+ searchParams:{
+    platform:"",
+    query:""
+ }
 }
 
 export const fetchHeaderDetails=createAsyncThunk(
@@ -37,7 +42,11 @@ export const fetchVideoDetails=createAsyncThunk(
 export const commonSlice=createSlice({
     initialState,
     name:"common",
-    reducers:{},
+    reducers:{
+        searchQuery:(state,action)=>{
+            state.searchParams=action.payload;
+        }
+    },
     extraReducers:(builder)=>{
        builder
        .addCase(fetchHeaderDetails.pending,(state)=>{
@@ -67,6 +76,9 @@ export const commonSlice=createSlice({
     }
 })
 
+export const{searchQuery}=commonSlice.actions; 
+
+export const selectSearchParams=(state)=>state.common.searchParams;
 export const selectHeaderDetails =(state)=>state.common.headerDetails;
 export const selectViedoDetails =(state)=>state.common.videoDetails
     

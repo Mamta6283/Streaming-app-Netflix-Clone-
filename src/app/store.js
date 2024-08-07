@@ -9,7 +9,7 @@ export const store = configureStore({
     counter: counterReducer,
      tv:tvReducer,
      movie :movieReducer,
-     common:commonReducer
+     common:commonReducer 
 
   },
 });

@@ -17,9 +17,9 @@ console.log(trailer)
 {/* <button className='px-4 py-3 bg-slate-900 text-white rounded-xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300'>CloseVideo</button> */}
             
             </iframe>
-            <div className='flex justify-center'>
+            {/* <div className='flex justify-center'>
             <button className='px-4 py-3  bg-yellow-700 text-white rounded-xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300' onClick={()=>setShowVideo(false)}>CloseVideo</button>
-            </div>
+            </div> */}
         </div>
         
         

@@ -1,9 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/Logo.png'
+import { useDispatch } from 'react-redux';
+import { searchQuery } from '../features/common/commonSlice';
 
 
 function Navbar(props) {
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
+    const handleSearch =(e)=>{
+        let{value}=e.target;
+        if(value.length > 3){
+        dispatch(searchQuery({platform :"movie",query: value}))
+        navigate("/search")
+        }
+
+    }
     return (
         
              <nav className='bg-gradient-to-b from-slate-950 to-transparent text-white fixed w-full z-50 transition-colors duration-300'>
@@ -19,7 +31,7 @@ function Navbar(props) {
                     <Link className='font-semibold text-white no-underline py-4 px-3 hover:bg-violet-400 transition' to="/browse/movie">Movies</Link>
                     <Link className='font-semibold text-white no-underline py-4 px-3 hover:bg-violet-400 transition' to="/browsebygenre/tv/10765">Browse By Genre</Link>
                 </div>
-     
+                    <input type='text' className='p-2 border-gray-300 text-black rounded-sm' placeholder='search' onChange={handleSearch}></input>     
             </div>
         </nav>
     );

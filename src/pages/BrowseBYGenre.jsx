@@ -6,7 +6,7 @@ import Card from '../components/Card';
 import { shuffle } from '../helper';
 
 function BrowseBYGenre(props) {
-    const {platform ,genreId} =useParams();
+    const {platform ,genreid} =useParams();
     const [videosByGenre ,setVideosByGenre]=useState(null)
     const[currentPlatform ,setCurrentPlatform]=useState(null)
 
@@ -32,14 +32,16 @@ const handleGenre = (e) =>{
     
 }
 useEffect(()=>{
-    fetchVideoByGenre(platform,genreId)
+    fetchVideoByGenre(platform,genreid)
 },[])
 
     return (
-        <div className='py-3 px-4'>
-            <div className='flex py-4'>
+        <div className='py-28 px-60 left-10 bg-gradient-to-tr from-slate-950  h-full  top-0 '>
+            <div className='flex py-4 left-10 '>
                 <select onChange={handlePlatform}>
-                    <option selected disabled value="tv">Tv</option>
+
+                    <option selected disabled >select type</option>
+                    <option value="tv">Tv </option>
                     <option value="movie">Movie</option>
                 </select>
 
@@ -47,14 +49,14 @@ useEffect(()=>{
                     <option selected disabled> Select Genre</option>
                     { 
                     genreList?.map((genre)=>(
-
+                          
                         <option value={genre?.id}>{genre.name}</option>
                     ))
                      }
                 </select>
             </div>
 
-            <div className='flex gap-4 flex-wrap'>
+            <div className='flex gap-4 flex-wrap left-24'>
                 {
                      videosByGenre?.map((video)=>(
 
