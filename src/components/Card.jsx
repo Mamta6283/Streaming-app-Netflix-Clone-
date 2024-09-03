@@ -13,6 +13,7 @@ function Card(props) {
     const handleDetails =()=>{
              
               navigate(`/details/${platform}/${video.id}`)
+              
     }
     return (
         <div className='rounded-xl overflow-hidden relative cursor-pointer group' onClick={handleDetails}>

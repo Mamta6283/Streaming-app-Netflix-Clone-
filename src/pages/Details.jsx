@@ -26,8 +26,17 @@ function Details(props) {
                 </div>
             
             <div className='px-4 flex bg-primary-600'>
-                <div className='px-4 py-10 w-1/3'>
+                <div className='px-4 py-10 w-1/3 '>
                     <img className='max-w-full rounded-md' src={IMG_URL+data?.poster_path} alt="" />
+               
+                
+                    <img className='max-w-full py-4 w-full  rounded-md' src={IMG_URL+data?.backdrop_path} alt="" />
+                    <img className='max-w-full py-4 w-full  rounded-md' src={IMG_URL+data?.backdrop_path} alt="" />
+                    { data?.tagline ?
+                    <h3 className='font-display text-2xl mb-1 text-white'>{data?.tagline}</h3> :""
+                     } 
+
+
                 </div>
                 <div className='px-4 w-3/4'>
                 <div className='py-3'>
@@ -35,6 +44,8 @@ function Details(props) {
                     { data?.tagline ?
                     <h3 className='font-display text-4xl mb-1 text-white'>{data?.tagline}</h3> :""
                      } 
+        <h2 className=' font-displaymax-w-90 text-white text-1xl max-w-md '>{data?.overview}</h2>
+
                      <div className='mt-4'>
                              <Ratings voteCount={data?.vote_count} voteAverage={data?.vote_average}></Ratings>
                              <hr className='my-4'></hr>
@@ -51,7 +62,22 @@ function Details(props) {
 
                                     </div>:""
                                 ))
+                            } 
+                            <div className='py-4'>
+                            <h1>similar {platform === 'tv' ? "tv shows" : "Movies"}</h1>
+                            <div className='flex flex-wrap'>
+
+                              {
+                                   data?.similar.results.map((video ,index)=>(
+                                    index < 6 ?
+                                    <div className='w-1/3 p-4'>
+                                        <Card video={video} platform={platform}></Card>
+                                        
+                                    </div>:""
+                                ))
                             }
+                            </div>
+                             </div>
 
                         </div>
                        

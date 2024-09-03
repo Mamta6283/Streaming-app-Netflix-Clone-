@@ -19,7 +19,7 @@ function Browse(props) {
         )
     
         const [genreList,setGenreList]=useState(null)
-
+                 
         const fetchGenreList=async(platform)=>{
             const response =await axios.get(request.getGenresList(platform))
             setGenreList(shuffle(response.data.genres))
@@ -52,7 +52,7 @@ function Browse(props) {
                             <MovieRow  key={genre.id} title={genre.name} genre={genre} platform={platform} />:" "
                          )):" "  
                       }
-              </div>
+              </div>    
         </>
     );
 }

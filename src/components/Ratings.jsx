@@ -8,7 +8,7 @@ function Ratings(props) {
     let vote=Math.floor(voteAverage / 2);
     const stars=[...Array(5)];
 
-  return (
+  return (  
         <div className='flex'>
             <div>
             {

@@ -49,8 +49,8 @@ function HomeScreen(props) {
         <>  
         
             {
-
-              
+           
+               
                 status==="success" ? <Header video={data.results[randomIndex]} platform={platformType.tv}  /> :"....loading....."
              
               }

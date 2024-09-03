@@ -146,7 +146,7 @@ export const selectOnTheAirTv=(state)=>state.tv.onTheAirTv
 //popular tv
 export const selectPopularTv=(state)=>state.tv.popularTv
 
-
+                
 
 //expert slice
 export  default tvSlice.reducer;
